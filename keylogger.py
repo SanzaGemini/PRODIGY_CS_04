@@ -22,12 +22,11 @@ def ask_permission():
 
 
 def listen_and_save_keys(key):
-    print(key)
     with open("keyfile.txt", "a") as logKey:
         try:
             char = key.char
             logKey.write(char)
-        except AttributeError:  # This handles special keys like 'space', 'enter', etc.
+        except AttributeError: 
             logKey.write(f" [{key}] ")
         except:
             print(colored("Error While Trying To Read The Key", "red"))
@@ -43,7 +42,7 @@ def end_program(listener):
     if decision != "1":
         return end_program(listener)
 
-    listener.stop()  # Stop the key listener when user enters '1'
+    listener.stop() 
 
 
 if __name__ == "__main__":
@@ -53,9 +52,9 @@ if __name__ == "__main__":
     decision = ask_permission()
     if decision:
         listener = get_listener()
-        listener.start()  # Start the key logger
+        listener.start()  
 
-        end_program(listener)  # Wait for the user to terminate the program
+        end_program(listener) 
 
     print("*** Thank You For Using The Key Logger Program ***")
 
